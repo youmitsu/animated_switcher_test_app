@@ -27,6 +27,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String text = 'home';
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +45,17 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Text(
             text,
             key: ValueKey<String>(text),
+            style: Theme.of(context).textTheme.title.copyWith(
+                  fontSize: 30.0,
+                ),
           ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: index,
         onTap: (i) {
           setState(() {
+            index = i;
             if (i == 0) {
               text = 'home';
             } else if (i == 1) {
